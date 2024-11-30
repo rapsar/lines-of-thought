@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line of Thought</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script type="module">
+        import npyjs from 'https://cdn.jsdelivr.net/npm/npyjs@0.6.0/+esm';
+    
+        // Import your custom script or write the logic here
+        import { initApp } from './static/scripts.js';
+    
+        // Initialize the app (ensure `initApp` is properly defined in `scripts.js`)
+        initApp(npyjs);
+    </script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="module" src="static/scripts.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Lines of Thought of Large Language Models</h1>
+    </header>
+    <main>
+        <div>
+            <fieldset>
+                <legend>Select Model</legend>
+                <label for="model-selector">Model:</label>
+                <select id="model-selector"></select>
+            </fieldset>
+        
+            <fieldset>
+                <legend>Define Basis</legend>
+                <label for="time-selector">Reference Layer:</label>
+                <select id="time-selector"></select>
+                
+                <label for="vector-selector">Singular Vectors:</label>
+                <input type="text" id="vector-selector" placeholder="1,2,3">
+                
+                <button id="update-button">Update Plot</button>
+                
+                <label>
+                    <input type="checkbox" id="exclude-last-point" />
+                    Exclude Last Point
+                </label>
+            </fieldset>
+        </div>
+        <div id="plot"></div>
+    </main>
+    <footer>
+        <!-- <p>© 2024 Your Project Name</p> -->
+    </footer>
+</body>
+</html>
