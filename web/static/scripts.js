@@ -1,6 +1,8 @@
 export function initApp(npyjs) {
     const models = [
         { id: "llama-3.2-1B", name: "llama-3.2-1B" },
+        { id: "llama-3.2-3B", name: "llama-3.2-3B" },
+        { id: "llama-2-7B", name: "llama-2-7B" },
         //{ id: "gpt35", name: "GPT-3.5" },
         // Add more models here
     ];
@@ -72,20 +74,31 @@ export function initApp(npyjs) {
                 console.error("Data not loaded.");
                 return [];
             }
-
-            const numDimensions = singularVectors.shape[0];
-            if (selectedTime < 0 || selectedTime >= singularVectors.shape[2]) {
+        
+            const numDimensions = singularVectors.shape[0]; // nDim
+            const numStoredVectors = singularVectors.shape[1]; // N
+            const numTimes = singularVectors.shape[2]; // nTimes
+        
+            if (selectedTime < 0 || selectedTime >= numTimes) {
                 console.error("Selected time is out of bounds.");
                 return [];
             }
-
+        
+            // Ensure selectedLayers indices are valid
+            if (selectedLayers.some((layer) => layer < 0 || layer >= numStoredVectors)) {
+                console.error("One or more selected layers are out of bounds.");
+                return [];
+            }
+        
+            // Extract singular vectors for the selected layers and time
             const selectedVectors = selectedLayers.map((layer) => {
-                const timeOffset = selectedTime * numDimensions * numDimensions;
+                const timeOffset = selectedTime * numDimensions * numStoredVectors;
                 const layerStart = timeOffset + layer * numDimensions;
                 const layerEnd = layerStart + numDimensions;
                 return singularVectors.data.slice(layerStart, layerEnd);
             });
-
+        
+            // Project trajectories
             const projectedTrajectories = [];
             const numTrajectories = Math.min(trajectories.shape[2], 100);
             for (let t = 0; t < numTrajectories; t++) {
@@ -109,7 +122,7 @@ export function initApp(npyjs) {
                 }
                 projectedTrajectories.push(trajectory);
             }
-
+        
             return projectedTrajectories;
         }
 
@@ -152,9 +165,9 @@ export function initApp(npyjs) {
                     title: "Trajectories in Latent Space",
                     showlegend: false,
                     scene: {
-                        xaxis: { title: "SVD1" },
-                        yaxis: { title: "SVD2" },
-                        zaxis: { title: "SVD3" },
+                        xaxis: { title: "SV 1" },
+                        yaxis: { title: "SV 2" },
+                        zaxis: { title: "SV 3" },
                     },
                 };
 
