@@ -3,6 +3,7 @@ export function initApp(npyjs) {
         { id: "llama-3.2-1B", name: "llama-3.2-1B" },
         { id: "llama-3.2-3B", name: "llama-3.2-3B" },
         { id: "llama-2-7B", name: "llama-2-7B" },
+        { id: "mistral-7B", name: "mistral-7B" },
         //{ id: "gpt35", name: "GPT-3.5" },
         // Add more models here
     ];
