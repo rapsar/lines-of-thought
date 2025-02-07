@@ -48,10 +48,10 @@ Notes:
 """
 
 import argparse
-import numpy as np
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from tqdm import tqdm  # For progress bar in minimal verbosity
+import numpy as np                                                                  # type: ignore
+import torch                                                                        # type: ignore
+from transformers import AutoModelForCausalLM, AutoTokenizer                        # type: ignore
+from tqdm import tqdm  # For progress bar in minimal verbosity                      # type: ignore
 
 def collect_last_token_embeddings(model, chunk, nDim):
     chunk = chunk.unsqueeze(0)  # Add batch dimension
