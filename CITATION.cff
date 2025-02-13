@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: lines-of-thought
+title: Code for Lines of Thoughts in LLMs
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -16,7 +16,23 @@ authors:
     family-names: Boullé
   - given-names: Christopher J.
     family-names: Earls
+identifiers:
+  - type: doi
+    value: 10.48550/arXiv.2410.01545
+    description: 'https://arxiv.org/abs/2410.01545'
 repository-code: 'https://github.com/rapsar/lines-of-thought'
+abstract: >-
+  Large Language Models achieve next-token prediction by
+  transporting a vectorized piece of text (prompt) across an
+  accompanying embedding space under the action of
+  successive transformer layers. The resulting
+  high-dimensional trajectories realize different
+  contextualization, or 'thinking', steps, and fully
+  determine the output probability distribution. We aim to
+  characterize the statistical properties of ensembles of
+  these 'lines of thought.'
 keywords:
   - LLM
   - interpretability
+  - ICLR
+  - transformer
