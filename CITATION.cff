@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: lines-of-thought
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Raphaël
+    family-names: Sarfati
+  - given-names: Toni J.B.
+    family-names: Liu
+  - given-names: Nicolas
+    family-names: Boullé
+  - given-names: Christopher J.
+    family-names: Earls
+repository-code: 'https://github.com/rapsar/lines-of-thought'
+keywords:
+  - LLM
+  - interpretability
